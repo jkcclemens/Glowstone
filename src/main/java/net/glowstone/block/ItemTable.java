@@ -2,9 +2,12 @@ package net.glowstone.block;
 
 import net.glowstone.block.blocktype.BlockChest;
 import net.glowstone.block.blocktype.BlockDirectDrops;
+import net.glowstone.block.blocktype.BlockDispenser;
 import net.glowstone.block.blocktype.BlockDoubleSlab;
 import net.glowstone.block.blocktype.BlockDropless;
+import net.glowstone.block.blocktype.BlockDropper;
 import net.glowstone.block.blocktype.BlockEnderchest;
+import net.glowstone.block.blocktype.BlockFire;
 import net.glowstone.block.blocktype.BlockGravel;
 import net.glowstone.block.blocktype.BlockHugeMushroom;
 import net.glowstone.block.blocktype.BlockLeaves;
@@ -63,6 +66,8 @@ public final class ItemTable {
         reg(Material.WORKBENCH, new BlockWorkbench());
         reg(Material.ENDER_CHEST, new BlockEnderchest());
         reg(Material.CHEST, new BlockChest());
+        reg(Material.DISPENSER, new BlockDispenser());
+        reg(Material.DROPPER, new BlockDropper());
         reg(Material.BOOKSHELF, new BlockDirectDrops(Material.BOOK, 3));
         reg(Material.CLAY, new BlockDirectDrops(Material.CLAY_BALL, 4));
         reg(Material.DOUBLE_STEP, new BlockDoubleSlab());
@@ -101,10 +106,8 @@ public final class ItemTable {
         reg(Material.CROPS, new BlockDirectDrops(Material.SEEDS));
         reg(Material.CAKE_BLOCK, new BlockDropless());
         reg(Material.WEB, new BlockDirectDrops(Material.STRING));
-        reg(Material.FIRE, new BlockDropless());
+        reg(Material.FIRE, new BlockFire());
         reg(Material.MONSTER_EGGS, new BlockDropless());
-        reg(Material.SKULL, new BlockSkull());
-
         reg(Material.SIGN, new ItemSign());
         reg(Material.REDSTONE, new ItemPlaceAs(Material.REDSTONE_WIRE));
         reg(Material.SUGAR_CANE, new ItemPlaceAs(Material.SUGAR_CANE_BLOCK));
@@ -115,11 +118,16 @@ public final class ItemTable {
         reg(Material.SKULL_ITEM, new ItemPlaceAs(Material.SKULL));
         reg(Material.REDSTONE_COMPARATOR, new ItemPlaceAs(Material.REDSTONE_COMPARATOR_OFF));
         reg(Material.SKULL_ITEM, new ItemSkull());
+        reg(Material.SKULL, new BlockSkull());
     }
 
     private void reg(Material material, ItemType type) {
         if (material.isBlock() != (type instanceof BlockType)) {
             throw new IllegalArgumentException("Cannot mismatch item and block: " + material + ", " + type);
+        }
+
+        if (idToType.containsKey(material.getId())) {
+            throw new IllegalArgumentException("Cannot use " + type + " for " + material + ", is already " + idToType.get(material.getId()));
         }
 
         idToType.put(material.getId(), type);
