@@ -1,30 +1,8 @@
 package net.glowstone.block;
 
-import net.glowstone.block.blocktype.BlockChest;
-import net.glowstone.block.blocktype.BlockDirectDrops;
-import net.glowstone.block.blocktype.BlockDispenser;
-import net.glowstone.block.blocktype.BlockDoubleSlab;
-import net.glowstone.block.blocktype.BlockDropless;
-import net.glowstone.block.blocktype.BlockDropper;
-import net.glowstone.block.blocktype.BlockEnderchest;
-import net.glowstone.block.blocktype.BlockFire;
-import net.glowstone.block.blocktype.BlockGravel;
-import net.glowstone.block.blocktype.BlockHugeMushroom;
-import net.glowstone.block.blocktype.BlockLeaves;
-import net.glowstone.block.blocktype.BlockMelon;
-import net.glowstone.block.blocktype.BlockMelonStem;
-import net.glowstone.block.blocktype.BlockMobSpawner;
-import net.glowstone.block.blocktype.BlockNote;
-import net.glowstone.block.blocktype.BlockPumpkinStem;
-import net.glowstone.block.blocktype.BlockRandomDrops;
-import net.glowstone.block.blocktype.BlockSign;
-import net.glowstone.block.blocktype.BlockSkull;
-import net.glowstone.block.blocktype.BlockTallGrass;
-import net.glowstone.block.blocktype.BlockType;
-import net.glowstone.block.blocktype.BlockWorkbench;
+import net.glowstone.block.blocktype.*;
 import net.glowstone.block.itemtype.ItemPlaceAs;
 import net.glowstone.block.itemtype.ItemSign;
-import net.glowstone.block.itemtype.ItemSkull;
 import net.glowstone.block.itemtype.ItemType;
 import org.bukkit.Material;
 
@@ -108,6 +86,29 @@ public final class ItemTable {
         reg(Material.WEB, new BlockDirectDrops(Material.STRING));
         reg(Material.FIRE, new BlockFire());
         reg(Material.MONSTER_EGGS, new BlockDropless());
+        reg(Material.FURNACE, new BlockFurnace());
+        reg(Material.LEVER, new BlockLever());
+        reg(Material.HOPPER, new BlockHopper());
+        reg(Material.ACACIA_STAIRS, new BlockStairs());
+        reg(Material.BIRCH_WOOD_STAIRS, new BlockStairs());
+        reg(Material.BRICK_STAIRS, new BlockStairs());
+        reg(Material.COBBLESTONE_STAIRS, new BlockStairs());
+        reg(Material.DARK_OAK_STAIRS, new BlockStairs());
+        reg(Material.JUNGLE_WOOD_STAIRS, new BlockStairs());
+        reg(Material.NETHER_BRICK_STAIRS, new BlockStairs());
+        reg(Material.QUARTZ_STAIRS, new BlockStairs());
+        reg(Material.SANDSTONE_STAIRS, new BlockStairs());
+        reg(Material.SPRUCE_WOOD_STAIRS, new BlockStairs());
+        reg(Material.SMOOTH_STAIRS, new BlockStairs());
+        reg(Material.WOOD_STAIRS, new BlockStairs());
+        reg(Material.STEP, new BlockSlab());
+        reg(Material.WOOD_STEP, new BlockSlab());
+        reg(Material.HAY_BLOCK, new BlockHay());
+        reg(Material.QUARTZ_BLOCK, new BlockQuartz());
+        reg(Material.LOG, new BlockLog());
+        reg(Material.LOG_2, new BlockLog2());
+        reg(Material.SKULL, new BlockSkull());
+
         reg(Material.SIGN, new ItemSign());
         reg(Material.REDSTONE, new ItemPlaceAs(Material.REDSTONE_WIRE));
         reg(Material.SUGAR_CANE, new ItemPlaceAs(Material.SUGAR_CANE_BLOCK));
@@ -117,8 +118,6 @@ public final class ItemTable {
         reg(Material.FLOWER_POT_ITEM, new ItemPlaceAs(Material.FLOWER_POT));
         reg(Material.SKULL_ITEM, new ItemPlaceAs(Material.SKULL));
         reg(Material.REDSTONE_COMPARATOR, new ItemPlaceAs(Material.REDSTONE_COMPARATOR_OFF));
-        reg(Material.SKULL_ITEM, new ItemSkull());
-        reg(Material.SKULL, new BlockSkull());
     }
 
     private void reg(Material material, ItemType type) {
